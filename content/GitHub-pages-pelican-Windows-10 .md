@@ -1,8 +1,10 @@
 Title: 在Windows10中使用Pelican和GitHub Pages建立Blog
 Date: 2020-02-15
 Category: Python
-Summary: 本文主要介绍如何在Windows10中使用Python的Pelican包
-建立静态站点，并使用Git发布至GitHub Pages上。之前找工作的时候使用GitHub
+Tags: Python, Pelican, Git, GitHub Pages
+Summary: 本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages上。
+
+之前找工作的时候使用GitHub
  Pages
 建立了一个个人主页，找到工作之后就荒废掉了。一直希望可以重新利用GitHub Pages这项免费的服务。现在准备将Github Pages升级成个人的blog，发一点工作学习中碰到的有意思的东西。第一篇blog就介绍一下使用GitHub Pages建立blog的经过。
 
@@ -23,15 +25,15 @@ Summary: 本文主要介绍如何在Windows10中使用Python的Pelican包
 
 ### 使用pelican-quickstart创建静态站点
 首先使用terminal安装pelican和markdown：
-```
+```text
 pip install pelican markdown
 ```
 然后使用terminal运行`pelican-quickstart`命令：
-```
+```text
 pelican-quickstart
 ```
 根据需要回答问题。以下是我的回答：
-```
+```text
 > Where do you want to create your new web site? [.]
 > What will be the title of this web site? My Blog
 > Who will be the author of this web site? Me
@@ -55,14 +57,14 @@ Category: Blog
 This is the first blog of my site.
 ```
 在terminal中输入
-```
+```text
 pelican content
 pelican --listen
 ```
 然后在浏览器地址栏输入localhost:8000便可以在本地电脑中看到做出的blog的效果。
 
 ### 发布至GitHub Pages
-```
+```text
 git add .
 git commit -a -m %1
 git push -u origin pelican
