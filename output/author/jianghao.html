@@ -1,136 +1,138 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
 <head>
-        <meta charset="utf-8" />
-        <title>Jianghao's blog - Jianghao</title>
-        <link rel="stylesheet" href="/theme/css/main.css" />
+    <title>Articles by Jianghao - Jianghao's blog</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+
+        <meta name="author" content="Jianghao" />
+
+    <!-- Open Graph tags -->
+        <meta property="og:site_name" content="Jianghao's blog" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Jianghao's blog"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="Jianghao's blog"/>
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
 </head>
+<body>
 
-<body id="index" class="home">
-        <header id="banner" class="body">
-                <h1><a href="/">Jianghao's blog</a></h1>
-                <nav><ul>
-                    <li><a href="/category/python.html">Python</a></li>
-                    <li><a href="/category/test.html">Test</a></li>
-                </ul></nav>
-        </header><!-- /#banner -->
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Jianghao's blog            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li >
+                            <a href="/category/python.html">Python</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
 
-            <aside id="featured" class="body">
-                <article>
-                    <h1 class="entry-title"><a href="/how-to-install-rpy2-in-windows-10.html">How to Install Rpy2 in Windows 10</a></h1>
-<footer class="post-info">
-        <abbr class="published" title="2020-04-04T00:00:00+02:00">
-                Published: Sat 04 April 2020
-        </abbr>
+<!-- Banner -->
+<!-- End Banner -->
 
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jianghao.html">Jianghao</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">Python</a> <a href="/tag/r.html">R</a> <a href="/tag/rpy2.html">Rpy2</a> </p>
-</footer><!-- /.post-info --><p>Summary: Rpy2 is the most popular python interface to R. It allows python users to enjoy the breadth and depth
-of R packages in python. Yet, unlike in UNIX-like operating systems,
-it is not straightforward to properly install and set up Rpy2 in Windows. 
-This article shows a simple way to install the Rpy2 python interface to R on a Windows 10 machine.</p>
-<h3>Download Rpy2.whl</h3>
-<p>Unlike what we usually do to install packages for python, on a Windows machine, the following command might not work as expected for rpy2:</p>
-<div class="highlight"><pre><span></span><code>pip install rpy2
-</code></pre></div>
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+            <article>
+                <h2><a href="/how-to-install-rpy2-in-windows-10.html">How to Install Rpy2 in Windows 10</a></h2>
+                <div class="summary"><p>Rpy2 is the most popular python interface to R. It allows python users to enjoy the breadth and depth of R packages in python. Yet, unlike in UNIX-like operating systems, it is not straightforward to properly install and set up Rpy2 in Windows. This article shows a simple way to install the Rpy2 python interface to R on a Windows 10 machine.</p>
+                    <a class="btn btn-default btn-xs" href="/how-to-install-rpy2-in-windows-10.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/zai-windows10zhong-shi-yong-pelicanhe-github-pagesjian-li-blog.html">在Windows10中使用Pelican和GitHub Pages建立Blog</a></h2>
+                <div class="summary"><p>本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages上。</p>
+                    <a class="btn btn-default btn-xs" href="/zai-windows10zhong-shi-yong-pelicanhe-github-pagesjian-li-blog.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 Jianghao
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
 
 
-<p>A work around is to download <a href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2">rpy2</a> from the Unofficial Windows Binaries for Python Extension Packages
-to the current working directory. Then use the following command to install rpy2 from the downloaded file: </p>
-<div class="highlight"><pre><span></span><code>pip install rpy2‑2.9.5‑cp37‑cp37m‑win32.whl
-</code></pre></div>
 
-
-<h3>Set up R_HOME and R_USER</h3>
-<p>After successfully installing the package, we need to set up two environment variables in Windows before
-rpy2 can properly work.
-Right click on This PC. Then go to -&gt; Properties -&gt; Advanced System Settings -&gt; Environment Variables.
-Create a new systme varialbe, R_HOME, which takes the path of the R installation directory as its value.
-For me, it looks like</p>
-<div class="highlight"><pre><span></span><code>C:\Program Files\R\R-3.6.3\
-</code></pre></div>
-
-
-<p>Create another new system variable, R_USER, which takes the path of the rpy2 installation directory as its value.
-For me, it looks like</p>
-<div class="highlight"><pre><span></span><code>F:\MyProject\venv\Lib\site-packages\rpy2
-</code></pre></div>
-
-
-<p>Note: If it does not work properly, try creating R_USER as a user variable too.</p>
-<p>Now rpy2 should work as expected.</p>                </article>
-            </aside><!-- /#featured -->
-                <section id="content" class="body">
-                    <h1>Other articles</h1>
-                    <hr />
-                    <ol id="posts-list" class="hfeed">
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/test-title.html" rel="bookmark"
-                           title="Permalink to Test Title">Test Title</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-02-16T00:00:00+01:00">
-                Published: Sun 16 February 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jianghao.html">Jianghao</a>
-        </address>
-<p>In <a href="/category/test.html">Test</a>.</p>
-
-</footer><!-- /.post-info -->                <p>This is a test file.</p>
-                <a class="readmore" href="/test-title.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-
-            <li><article class="hentry">
-                <header>
-                    <h1><a href="/zai-windows10zhong-shi-yong-pelicanhe-github-pagesjian-li-blog.html" rel="bookmark"
-                           title="Permalink to 在Windows10中使用Pelican和GitHub Pages建立Blog">在Windows10中使用Pelican和GitHub Pages建立Blog</a></h1>
-                </header>
-
-                <div class="entry-content">
-<footer class="post-info">
-        <abbr class="published" title="2020-02-15T00:00:00+01:00">
-                Published: Sat 15 February 2020
-        </abbr>
-
-        <address class="vcard author">
-                By                         <a class="url fn" href="/author/jianghao.html">Jianghao</a>
-        </address>
-<p>In <a href="/category/python.html">Python</a>.</p>
-<p>tags: <a href="/tag/python.html">Python</a> <a href="/tag/pelican.html">Pelican</a> <a href="/tag/git.html">Git</a> <a href="/tag/github-pages.html">GitHub Pages</a> </p>
-</footer><!-- /.post-info -->                <p>本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages上。</p>
-                <a class="readmore" href="/zai-windows10zhong-shi-yong-pelicanhe-github-pagesjian-li-blog.html">read more</a>
-                </div><!-- /.entry-content -->
-            </article></li>
-                </ol><!-- /#posts-list -->
-                </section><!-- /#content -->
-        <section id="extras" class="body">
-                <div class="blogroll">
-                        <h2>links</h2>
-                        <ul>
-                            <li><a href="http://getpelican.com/">Pelican</a></li>
-                            <li><a href="http://python.org/">Python.org</a></li>
-                            <li><a href="http://jinja.pocoo.org/">Jinja2</a></li>
-                        </ul>
-                </div><!-- /.blogroll -->
-        </section><!-- /#extras -->
-
-        <footer id="contentinfo" class="body">
-                <address id="about" class="vcard body">
-                Proudly powered by <a href="http://getpelican.com/">Pelican</a>, which takes great advantage of <a href="http://python.org">Python</a>.
-                </address><!-- /#about -->
-
-                <p>The theme is by <a href="http://coding.smashingmagazine.com/2009/08/04/designing-a-html-5-layout-from-scratch/">Smashing Magazine</a>, thanks!</p>
-        </footer><!-- /#contentinfo -->
 
 </body>
 </html>

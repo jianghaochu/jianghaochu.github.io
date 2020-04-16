@@ -8,6 +8,16 @@ SITEURL = ''
 
 PATH = 'content'
 
+THEME = 'theme'
+
+PLUGIN_PATHS = ['plugins/', ]
+
+PLUGINS = ['i18n_subsites', ]
+
+JINJA_ENVIRONMENT = {
+    'extensions': ['jinja2.ext.i18n'],
+}
+
 TIMEZONE = 'Europe/Paris'
 
 DEFAULT_LANG = 'en'
