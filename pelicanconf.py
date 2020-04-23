@@ -12,7 +12,7 @@ THEME = 'theme'
 
 PLUGIN_PATHS = ['plugins/', ]
 
-PLUGINS = ['i18n_subsites', ]
+PLUGINS = ['i18n_subsites', 'render_math']
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],

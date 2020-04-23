@@ -2,7 +2,8 @@ Title: 在Windows10中使用Pelican和GitHub Pages建立Blog
 Date: 2020-02-15
 Category: Python
 Tags: Python, Pelican, Git, GitHub Pages
-Summary: 本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages上。
+
+本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages上。
 
 之前找工作的时候使用GitHub
  Pages

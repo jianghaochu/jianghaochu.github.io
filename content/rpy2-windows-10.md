@@ -2,9 +2,8 @@ Title: How to Install Rpy2 in Windows 10
 Date: 4/4/2020
 Category: Python
 Tags: Python, R, Rpy2
-Summary: Rpy2 is the most popular python interface to R. It allows python users to enjoy the breadth and depth of R packages in python. Yet, unlike in UNIX-like operating systems, it is not straightforward to properly install and set up Rpy2 in Windows. This article shows a simple way to install the Rpy2 python interface to R on a Windows 10 machine.
 
-Rpy2 is the most popular python interface to R. It allows python users to enjoy the breadth and depth of R packages in python. Yet, unlike in UNIX-like operating systems, it is not straightforward to properly install and set up Rpy2 in Windows. This article shows a simple way to install the Rpy2 python interface to R on a Windows 10 machine.
+Rpy2 is a popular python interface to R. It allows python users to enjoy the breadth and depth of R packages in python. Yet, unlike in UNIX-like operating systems, it is not straightforward to properly install and set up Rpy2 in Windows. This article shows a simple way to install the Rpy2 python interface to R on a Windows 10 machine.
 ### Download Rpy2.whl
 Unlike what we usually do to install packages for python, on a Windows machine, the following command might not work as expected for rpy2:
 ```text

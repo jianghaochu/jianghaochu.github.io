@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en" prefix="og: http://ogp.me/ns# fb: https://www.facebook.com/2008/fbml">
+<head>
+    <script data-ad-client="ca-pub-2981496625161948" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <title>Ordinary Least Squares Regression in Python from Scratch - Jianghao's blog</title>
+    <!-- Using the latest rendering mode for IE -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+<link rel="canonical" href="/ordinary-least-squares-regression-in-python-from-scratch.html">
+
+        <meta name="author" content="Jianghao" />
+        <meta name="keywords" content="Econometrics,NumPy" />
+        <meta name="description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # import NumPy import numpy …" />
+
+        <meta property="og:site_name" content="Jianghao's blog" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Ordinary Least Squares Regression in Python from Scratch"/>
+        <meta property="og:url" content="/ordinary-least-squares-regression-in-python-from-scratch.html"/>
+        <meta property="og:description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # import NumPy import numpy …"/>
+        <meta property="article:published_time" content="2020-04-21" />
+            <meta property="article:section" content="Econometrics" />
+            <meta property="article:tag" content="Econometrics" />
+            <meta property="article:tag" content="NumPy" />
+            <meta property="article:author" content="Jianghao" />
+
+
+
+    <!-- Bootstrap -->
+        <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
+    <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
+
+    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
+
+
+
+</head>
+<body>
+
+<div class="navbar navbar-default navbar-fixed-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-ex1-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a href="/" class="navbar-brand">
+Jianghao's blog            </a>
+        </div>
+        <div class="collapse navbar-collapse navbar-ex1-collapse">
+            <ul class="nav navbar-nav">
+                        <li class="active">
+                            <a href="/category/econometrics.html">Econometrics</a>
+                        </li>
+                        <li >
+                            <a href="/category/python.html">Python</a>
+                        </li>
+            </ul>
+            <ul class="nav navbar-nav navbar-right">
+            </ul>
+        </div>
+        <!-- /.navbar-collapse -->
+    </div>
+</div> <!-- /.navbar -->
+
+<!-- Banner -->
+<!-- End Banner -->
+
+<!-- Content Container -->
+<div class="container">
+    <div class="row">
+        <div class="col-sm-9">
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/ordinary-least-squares-regression-in-python-from-scratch.html"
+                       rel="bookmark"
+                       title="Permalink to Ordinary Least Squares Regression in Python from Scratch">
+                        Ordinary Least Squares Regression in Python from Scratch
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-04-21T00:00:00+02:00"> Tue 21 April 2020</time>
+    </span>
+
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/econometrics.html">Econometrics</a>
+        /
+	<a href="/tag/numpy.html">NumPy</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the <code>NumPy</code> package.
+<code>NumPy</code> is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># import NumPy</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+</code></pre></div>
+
+
+<p>Then, let's generate some toy data to play with.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate some random data</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+</code></pre></div>
+
+
+<p>Now we have an n by k matrix <span class="math">\(x\)</span> as the design matrix and an n by 1 vector <span class="math">\(y\)</span> as the vector of endogenous variable. 
+The OLS coefficients can be calculated using the formula below:
+</p>
+<div class="math">$$ \hat{\beta} = (x'x)^{-1}x'y. $$</div>
+<p>Next, we calculate the value of the above formula using NumPy. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate OLS regression coefficients</span>
+<span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">beta_hat</span>
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">array([ 0.93557686,  1.25994067, 10.01363476])</span>
+</code></pre></div>
+
+
+<p>The values of the calculated OLS coefficients using the simulated toy data are shown above. We can further develop it
+into a function for OLS regression and add other functionalities like calculating the variances of the OLS coefficients.</p>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+    var align = "center",
+        indent = "0em",
+        linebreak = "false";
+
+    if (false) {
+        align = (screen.width < 768) ? "left" : align;
+        indent = (screen.width < 768) ? "0em" : indent;
+        linebreak = (screen.width < 768) ? 'true' : linebreak;
+    }
+
+    var mathjaxscript = document.createElement('script');
+    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
+    mathjaxscript.type = 'text/javascript';
+    mathjaxscript.src = 'https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.3/latest.js?config=TeX-AMS-MML_HTMLorMML';
+
+    var configscript = document.createElement('script');
+    configscript.type = 'text/x-mathjax-config';
+    configscript[(window.opera ? "innerHTML" : "text")] =
+        "MathJax.Hub.Config({" +
+        "    config: ['MMLorHTML.js']," +
+        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'none' } }," +
+        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
+        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
+        "    displayAlign: '"+ align +"'," +
+        "    displayIndent: '"+ indent +"'," +
+        "    showMathMenu: true," +
+        "    messageStyle: 'normal'," +
+        "    tex2jax: { " +
+        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
+        "        displayMath: [ ['$$','$$'] ]," +
+        "        processEscapes: true," +
+        "        preview: 'TeX'," +
+        "    }, " +
+        "    'HTML-CSS': { " +
+        "        availableFonts: ['STIX', 'TeX']," +
+        "        preferredFont: 'STIX'," +
+        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
+        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
+        "    }, " +
+        "}); " +
+        "if ('default' !== 'default') {" +
+            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
+                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
+                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
+                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
+                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
+                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
+            "});" +
+        "}";
+
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(configscript);
+    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
+}
+</script>
+            </div>
+            <!-- /.entry-content -->
+        </article>
+    </section>
+
+        </div>
+        <div class="col-sm-3" id="sidebar">
+            <aside>
+<!-- Sidebar -->
+<section class="well well-sm">
+  <ul class="list-group list-group-flush">
+
+<!-- Sidebar/Links -->
+<li class="list-group-item">
+  <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
+  <ul class="list-group" id="links">
+    <li class="list-group-item">
+      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://python.org/" target="_blank">Python.org</a>
+    </li>
+    <li class="list-group-item">
+      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+    </li>
+  </ul>
+</li>
+<!-- End Sidebar/Links -->
+  </ul>
+</section>
+<!-- End Sidebar -->            </aside>
+        </div>
+    </div>
+</div>
+<!-- End Content Container -->
+
+<footer>
+   <div class="container">
+      <hr>
+      <div class="row">
+         <div class="col-xs-10">&copy; 2020 Jianghao
+            &middot; Powered by <a href="https://github.com/getpelican/pelican-themes/tree/master/pelican-bootstrap3" target="_blank">pelican-bootstrap3</a>,
+            <a href="http://docs.getpelican.com/" target="_blank">Pelican</a>,
+            <a href="http://getbootstrap.com" target="_blank">Bootstrap</a>         </div>
+         <div class="col-xs-2"><p class="pull-right"><i class="fa fa-arrow-up"></i> <a href="#">Back to top</a></p></div>
+      </div>
+   </div>
+</footer>
+<script src="/theme/js/jquery.min.js"></script>
+
+<!-- Include all compiled plugins (below), or include individual files as needed -->
+<script src="/theme/js/bootstrap.min.js"></script>
+
+<!-- Enable responsive features in IE8 with Respond.js (https://github.com/scottjehl/Respond) -->
+<script src="/theme/js/respond.min.js"></script>
+
+
+
+
+</body>
+</html>
