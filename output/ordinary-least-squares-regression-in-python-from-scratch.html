@@ -55,11 +55,17 @@ Jianghao's blog            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
+                         <li><a href="/pages/about-me.html">
+                             About Me
+                          </a></li>
                         <li class="active">
                             <a href="/category/econometrics.html">Econometrics</a>
                         </li>
                         <li >
                             <a href="/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="/category/turtle.html">Turtle</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -123,11 +129,12 @@ Jianghao's blog            </a>
 </code></pre></div>
 
 
-<p>Now we have an n by k matrix <span class="math">\(x\)</span> as the design matrix and an n by 1 vector <span class="math">\(y\)</span> as the vector of endogenous variable. 
-The OLS coefficients can be calculated using the formula below:
+<h3>OLS Estimator</h3>
+<p>Now we have an <span class="math">\(n \times k\)</span> matrix <span class="math">\(x\)</span> as the design matrix and an <span class="math">\(n \times 1\)</span> vector <span class="math">\(y\)</span> as the vector of endogenous variable. 
+The OLS estimator can be calculated using the formula below:
 </p>
 <div class="math">$$ \hat{\beta} = (x'x)^{-1}x'y. $$</div>
-<p>Next, we calculate the value of the above formula using NumPy. </p>
+<p>Next, we calculate the value of the OLS estimator with the formula above using NumPy. </p>
 <div class="highlight"><pre><span></span><code><span class="c1"># Calculate OLS regression coefficients</span>
 <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">beta_hat</span>
@@ -139,7 +146,8 @@ The OLS coefficients can be calculated using the formula below:
 
 
 <p>The values of the calculated OLS coefficients using the simulated toy data are shown above. We can further develop it
-into a function for OLS regression and add other functionalities like calculating the variances of the OLS coefficients.</p>
+into a function for OLS regression and add other functionality like calculating the variances of the OLS estimates.</p>
+<h3>Variance of Estimator</h3>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",

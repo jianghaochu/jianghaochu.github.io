@@ -1,6 +1,6 @@
 Title: Ordinary Least Squares Regression in Python from Scratch
 Date: 04-21-2020
-Category: Econometrics
+Category: Econometrics, Python
 Tags: Econometrics, NumPy
 
 This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the `NumPy` package.
@@ -20,11 +20,12 @@ x = np.concatenate([np.ones((n, 1)), np.random.randn(n, k)], axis=1)
 y = np.matmul(x, beta) + np.random.randn(n)
 ```
 
-Now we have an n by k matrix $x$ as the design matrix and an n by 1 vector $y$ as the vector of endogenous variable. 
-The OLS coefficients can be calculated using the formula below:
+### OLS Estimator
+Now we have an $n \times k$ matrix $x$ as the design matrix and an $n \times 1$ vector $y$ as the vector of endogenous variable. 
+The OLS estimator can be calculated using the formula below:
 $$ \hat{\beta} = (x'x)^{-1}x'y. $$
 
-Next, we calculate the value of the above formula using NumPy. 
+Next, we calculate the value of the OLS estimator with the formula above using NumPy. 
 
 ```python
 # Calculate OLS regression coefficients
@@ -35,4 +36,6 @@ beta_hat
     array([ 0.93557686,  1.25994067, 10.01363476])
 
 The values of the calculated OLS coefficients using the simulated toy data are shown above. We can further develop it
-into a function for OLS regression and add other functionalities like calculating the variances of the OLS coefficients.
+into a function for OLS regression and add other functionality like calculating the variances of the OLS estimates.
+
+### Variance of Estimator

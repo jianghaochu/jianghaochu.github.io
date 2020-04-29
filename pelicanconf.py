@@ -10,9 +10,17 @@ PATH = 'content'
 
 THEME = 'theme'
 
+MARKUP = ('md', 'ipynb')
+
+# if you create jupyter files in the content dir, snapshots are saved with the same
+# metadata. These need to be ignored.
+IGNORE_FILES = [".ipynb_checkpoints"]
+
 PLUGIN_PATHS = ['plugins/', ]
 
-PLUGINS = ['i18n_subsites', 'render_math']
+PLUGINS = ['i18n_subsites', 'render_math', 'more_categories', 'ipynb.markup']
+
+IPYNB_USE_METACELL = True
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
