@@ -7,10 +7,7 @@ I got my one-month-old red-eared turtle from PetSmart yesterday and learned a lo
 Keeping a pet turtle actually needs more work and preparation than I initially expected. Here is a summary of the things 
 I learned and I believe everyone should know when considering having a pet turtle. 
 
-If you are planning to keep your turtle indoor, there are a couple of essential accessories that you
-will need:
-
-A red-eared turtle and other popular turtle species can usually grow up to 12 inches in full length and will need a water tank of at least 40 gallons (36 3/16 x 18 1/4 x 16 15/16 inches) which
+A red-eared turtle and other popular turtle species can usually grow up to 12 inches and will need a water tank of at least 40 gallons (36 3/16 x 18 1/4 x 16 15/16 inches) which
 may take up quite some space for people living in small apartments like me.
 
 Turtles need to be exposed to enough UVA and UVB every day to stimulate the growth of their bones and shells.
