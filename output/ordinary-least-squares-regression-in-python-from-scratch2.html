@@ -11,7 +11,7 @@
     </script>
 
     <script data-ad-client="ca-pub-2981496625161948" async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
-    <title>Ordinary Least Squares Regression in Python from Scratch - Jianghao's blog</title>
+    <title>Ordinary Least Squares Regression in Python from Scratch2 - Jianghao's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -19,7 +19,7 @@
 
 
 
-<link rel="canonical" href="/ordinary-least-squares-regression-in-python-from-scratch.html">
+<link rel="canonical" href="/ordinary-least-squares-regression-in-python-from-scratch2.html">
 
         <meta name="author" content="Jianghao" />
         <meta name="keywords" content="Econometrics,NumPy" />
@@ -27,8 +27,8 @@
 
         <meta property="og:site_name" content="Jianghao's blog" />
         <meta property="og:type" content="article"/>
-        <meta property="og:title" content="Ordinary Least Squares Regression in Python from Scratch"/>
-        <meta property="og:url" content="/ordinary-least-squares-regression-in-python-from-scratch.html"/>
+        <meta property="og:title" content="Ordinary Least Squares Regression in Python from Scratch2"/>
+        <meta property="og:url" content="/ordinary-least-squares-regression-in-python-from-scratch2.html"/>
         <meta property="og:description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # import NumPy import numpy …"/>
         <meta property="article:published_time" content="2020-04-21" />
             <meta property="article:section" content="Econometrics" />
@@ -95,10 +95,10 @@ Jianghao's blog            </a>
         <article>
             <header class="page-header">
                 <h1>
-                    <a href="/ordinary-least-squares-regression-in-python-from-scratch.html"
+                    <a href="/ordinary-least-squares-regression-in-python-from-scratch2.html"
                        rel="bookmark"
-                       title="Permalink to Ordinary Least Squares Regression in Python from Scratch">
-                        Ordinary Least Squares Regression in Python from Scratch
+                       title="Permalink to Ordinary Least Squares Regression in Python from Scratch2">
+                        Ordinary Least Squares Regression in Python from Scratch2
                     </a>
                 </h1>
             </header>
@@ -122,80 +122,42 @@ Jianghao's blog            </a>
     
 </footer><!-- /.post-info -->                    </div>
                 </div>
-                <p>This article introduces how to calculate the coefficients for an
-Ordinary Least Squares regression in Python using only the <tt class="docutils literal">NumPy</tt>
-package. <tt class="docutils literal">NumPy</tt> is the fundamental package for scientific computing
-with Python. It performs in some way similar to R. First, let us import
-the <tt class="docutils literal">NumPy</tt> package.</p>
-<pre class="code ipython3 literal-block">
-<span class="c1"># import NumPy</span>
+                <p>This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the <code>NumPy</code> package.
+<code>NumPy</code> is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the <code>NumPy</code> package.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># import NumPy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
-</pre>
+</code></pre></div>
+
+
 <p>Then, let's generate some toy data to play with.</p>
-<pre class="code ipython3 literal-block">
-<span class="c1"># generate some random data</span>
+<div class="highlight"><pre><span></span><code><span class="c1"># generate some random data</span>
 <span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span>
 <span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
-</pre>
-<div class="section" id="ols-estimator">
-<h2>OLS Estimator</h2>
-<p>Now we have an <span class="math">\(n \times k\)</span> matrix <span class="math">\(x\)</span> as the design matrix
-and an <span class="math">\(n \times 1\)</span> vector <span class="math">\(y\)</span> as the vector of the
-endogenous variable. The OLS estimator can be calculated using the
-formula below:</p>
-<div class="math">
-\begin{equation*}
-\hat{\beta} = (x'x)^{-1}x'y.
-\end{equation*}
-</div>
-<p>Next, we calculate the value of the OLS estimator with the formula above
-using NumPy.</p>
-<pre class="code ipython3 literal-block">
-<span class="c1"># Calculate OLS regression coefficients</span>
+</code></pre></div>
+
+
+<h3>OLS Estimator</h3>
+<p>Now we have an <span class="math">\(n \times k\)</span> matrix <span class="math">\(x\)</span> as the design matrix and an <span class="math">\(n \times 1\)</span> vector <span class="math">\(y\)</span> as the vector of the endogenous variable. 
+The OLS estimator can be calculated using the formula below:
+</p>
+<div class="math">$$ \hat{\beta} = (x'x)^{-1}x'y. $$</div>
+<p>Next, we calculate the value of the OLS estimator with the formula above using NumPy. </p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Calculate OLS regression coefficients</span>
 <span class="n">beta_hat</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x</span><span class="p">))),</span> <span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">()),</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">beta_hat</span>
-</pre>
-<pre class="literal-block">
-array([ 1.05552416,  1.0684565 , 10.08328924])
-</pre>
-<p>The values of the calculated OLS coefficients using the simulated toy
-data are shown above. We can further develop it into a function and add
-other functionalities like calculating the variance of the OLS estimate.</p>
-</div>
-<div class="section" id="variance-of-estimator">
-<h2>Variance of Estimator</h2>
-<p>Next let us calculate the variance of the OLS estimate. From the formula
-of the OLS estimator above, we can derive the formula of its variance to
-be</p>
-<div class="math">
-\begin{equation*}
-Var(\hat{\beta})=\sigma^2(X'X)^{-1},
-\end{equation*}
-</div>
-<p>where <span class="math">\(\sigma^2\)</span> is the variance of the error term. We can use the sample variance of the error term</p>
-<div class="math">
-\begin{equation*}
-\hat{\sigma}^2 = \frac{\sum\hat{u}_i^2}{n-k-1},
-\end{equation*}
-</div>
-<p>where <span class="math">\(\hat{u_i}\)</span> are the residuals from the OLS regression as an
-estimate of its true variance.</p>
-<pre class="code ipython3 literal-block">
-<span class="c1"># Calculate Variance of OLS estimate</span>
-<span class="n">residual</span> <span class="o">=</span> <span class="n">y</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta_hat</span><span class="p">)</span>  <span class="c1"># calculate the residual</span>
-<span class="n">sigma_hat</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">residual</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="n">k</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>  <span class="c1"># estimate of error term variance</span>
-<span class="n">variance_beta_hat</span> <span class="o">=</span> <span class="n">sigma_hat</span> <span class="o">*</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">transpose</span><span class="p">(),</span> <span class="n">x</span><span class="p">))</span>  <span class="c1"># Calculate variance of OLS estimate</span>
-<span class="n">variance_beta_hat</span>
-</pre>
-<pre class="literal-block">
-array([[ 0.01182717,  0.00117423, -0.00012874],
-       [ 0.00117423,  0.01178575,  0.00108286],
-       [-0.00012874,  0.00108286,  0.01194932]])
-</pre>
-</div>
-<script type='text/javascript'>if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
+</code></pre></div>
+
+
+<div class="highlight"><pre><span></span><code><span class="err">array([ 0.93557686,  1.25994067, 10.01363476])</span>
+</code></pre></div>
+
+
+<p>The values of the calculated OLS coefficients using the simulated toy data are shown above. We can further develop it
+into a function and add other functionalities like calculating the variance of the OLS estimate.</p>
+<h3>Variance of Estimator</h3>
+<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
         linebreak = "false";

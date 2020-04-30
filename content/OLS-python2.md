@@ -1,4 +1,4 @@
-Title: Ordinary Least Squares Regression in Python from Scratch
+Title: Ordinary Least Squares Regression in Python from Scratch2
 Date: 04-21-2020
 Category: Econometrics, Python
 Tags: Econometrics, NumPy
