@@ -2,7 +2,7 @@ Ordinary Least Squares Regression in Python from Scratch
 ========================================================
 
 :Date: 04-21-2020
-:Category: Econometrics
+:Category: Econometrics, Python
 :Tags: Econometrics, NumPy
 
 This article introduces how to calculate the coefficients for an
@@ -27,7 +27,7 @@ Then, let's generate some toy data to play with.
     y = np.matmul(x, beta) + np.random.randn(n)
 
 OLS Estimator
-~~~~~~~~~~~~~
+-------------
 
 Now we have an :math:`n \times k` matrix :math:`x` as the design matrix
 and an :math:`n \times 1` vector :math:`y` as the vector of the
@@ -59,7 +59,7 @@ data are shown above. We can further develop it into a function and add
 other functionalities like calculating the variance of the OLS estimate.
 
 Variance of Estimator
-~~~~~~~~~~~~~~~~~~~~~
+---------------------
 
 Next let us calculate the variance of the OLS estimate. From the formula
 of the OLS estimator above, we can derive the formula of its variance to
