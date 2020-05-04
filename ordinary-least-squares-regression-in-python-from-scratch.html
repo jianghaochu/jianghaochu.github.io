@@ -22,13 +22,13 @@
 
         <meta name="author" content="Jianghao" />
         <meta name="keywords" content="Econometrics,NumPy" />
-        <meta name="description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # import NumPy import numpy …" />
+        <meta name="description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # Import NumPy import numpy …" />
 
         <meta property="og:site_name" content="Jianghao's blog" />
         <meta property="og:type" content="article"/>
         <meta property="og:title" content="Ordinary Least Squares Regression in Python from Scratch"/>
         <meta property="og:url" content="/ordinary-least-squares-regression-in-python-from-scratch.html"/>
-        <meta property="og:description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # import NumPy import numpy …"/>
+        <meta property="og:description" content="This article introduces how to calculate the coefficients for an Ordinary Least Squares regression in Python using only the NumPy package. NumPy is the fundamental package for scientific computing with Python. It performs in some way similar to R. First, let us import the NumPy package. # Import NumPy import numpy …"/>
         <meta property="article:published_time" content="2020-04-21" />
             <meta property="article:section" content="Econometrics" />
             <meta property="article:tag" content="Econometrics" />
@@ -127,16 +127,16 @@ package. <tt class="docutils literal">NumPy</tt> is the fundamental package for 
 with Python. It performs in some way similar to R. First, let us import
 the <tt class="docutils literal">NumPy</tt> package.</p>
 <pre class="code ipython3 literal-block">
-<span class="c1"># import NumPy</span>
+<span class="c1"># Import NumPy</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre>
 <p>Then, let's generate some toy data to play with.</p>
 <pre class="code ipython3 literal-block">
-<span class="c1"># generate some random data</span>
-<span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span>
-<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
-<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
-<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="c1"># Generate some random data</span>
+<span class="n">n</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">2</span>  <span class="c1"># set the dimensions of the design matrix</span>
+<span class="n">beta</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>  <span class="c1"># set the true coefficients</span>
+<span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">concatenate</span><span class="p">([</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">n</span><span class="p">,</span> <span class="mi">1</span><span class="p">)),</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">k</span><span class="p">)],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>  <span class="c1"># generate random x</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">matmul</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">beta</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>  <span class="c1"># generate random y</span>
 </pre>
 <div class="section" id="ols-estimator">
 <h2>OLS Estimator</h2>
@@ -273,13 +273,10 @@ array([[ 0.01182717,  0.00117423, -0.00012874],
   <h4><i class="fa fa-external-link-square fa-lg"></i><span class="icon-label">Links</span></h4>
   <ul class="list-group" id="links">
     <li class="list-group-item">
-      <a href="http://getpelican.com/" target="_blank">Pelican</a>
+      <a href="https://github.com/jianghaochu" target="_blank">GitHub</a>
     </li>
     <li class="list-group-item">
-      <a href="http://python.org/" target="_blank">Python.org</a>
-    </li>
-    <li class="list-group-item">
-      <a href="http://jinja.pocoo.org/" target="_blank">Jinja2</a>
+      <a href="mailto:jianghaochu@gmail.com" target="_blank">Email</a>
     </li>
   </ul>
 </li>

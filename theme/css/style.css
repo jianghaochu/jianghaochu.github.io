@@ -239,3 +239,14 @@ figure.floatcenter, .align-center {
 .gap-left {
   margin-left: 10px;
 }
+
+/* Remove background color for literal-block (code, code output, etc.) */
+.literal-block {
+    background-color: transparent;
+}
+
+/* Change background color for code (code) */
+.code {
+    background-color: #f5f5f5;
+}
+
