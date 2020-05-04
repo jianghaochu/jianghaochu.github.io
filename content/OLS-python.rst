@@ -13,18 +13,18 @@ the ``NumPy`` package.
 
 .. code:: ipython3
 
-    # import NumPy
+    # Import NumPy
     import numpy as np
 
 Then, let's generate some toy data to play with.
 
 .. code:: ipython3
 
-    # generate some random data
-    n, k = 100, 2
-    beta = np.array([1, 1, 10])
-    x = np.concatenate([np.ones((n, 1)), np.random.randn(n, k)], axis=1)
-    y = np.matmul(x, beta) + np.random.randn(n)
+    # Generate some random data
+    n, k = 100, 2  # set the dimensions of the design matrix
+    beta = np.array([1, 1, 10])  # set the true coefficients
+    x = np.concatenate([np.ones((n, 1)), np.random.randn(n, k)], axis=1)  # generate random x
+    y = np.matmul(x, beta) + np.random.randn(n)  # generate random y
 
 OLS Estimator
 -------------
