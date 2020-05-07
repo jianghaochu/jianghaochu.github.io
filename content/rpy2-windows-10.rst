@@ -24,8 +24,8 @@ to the current working directory. Then use the following command to install ``rp
 
     pip install rpy2‑2.9.5‑cp37‑cp37m‑win32.whl
 
-Set up R_HOME and R_USER
-------------------------
+Set up `R_HOME` and `R_USER`
+----------------------------
 
 After successfully installing the package, we need to set up two environment variables in Windows before
 ``rpy2`` can work properly.
