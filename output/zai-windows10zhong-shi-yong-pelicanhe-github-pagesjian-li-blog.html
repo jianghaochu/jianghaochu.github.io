@@ -198,8 +198,7 @@ pelican --listen
 
 <p>然后在浏览器地址栏输入localhost:8000便可以在本地电脑中看到做出的blog的效果。</p>
 <h3>发布至GitHub Pages</h3>
-<p>接下来需要将做好的静态展点发布至GitHub Pages。由于之前在创建GitHub账号的时候我们已经将云端repository和本地
-文件建立了联系，现在我们可以直接使用一下命令将本地文件上传至云端。</p>
+<p>接下来需要将做好的静态展点发布至GitHub Pages。由于之前在创建GitHub账号的时候我们已经将云端repository和本地文件建立了联系，现在我们可以直接使用一下命令将本地文件上传至云端。</p>
 <div class="highlight"><pre><span></span><code>git add .  # 将修改过的本地文件添加到Git目录中
 git commit -a -m &quot;my first post&quot;  # Commit我们所做的修改
 git push -u origin pelican  # 将站点的源文件上传至GitHub repository的pelican branch中
@@ -210,10 +209,8 @@ git checkout pelican  # 返回pelican branch
 </code></pre></div>
 
 
-<p>以后每次对网站做出修改之后只需要重新执行上述命令就可以在网站上看到所做的修改。注意这里我们在GitHub上建立了两个branch，
-master branch用来存放编译好的站点文件，浏览器在访问我们的网站的时候也会从master branch里寻找相应的文件。
-pelican branch用来编译网站的源文件，pelican的设置文件、每一篇blog的Markdown文件等不需要浏览器看到的文件都存在这个branch上。</p>
-<p>稍微登上几分钟后，在浏览器中输入我们网站的地址，就可以看到刚刚发布的网站了。</p>
+<p>以后每次对网站做出修改之后只需要重新执行上述命令就可以在网站上看到所做的修改。注意这里我们在GitHub上建立了两个branch，master branch用来存放编译好的站点文件，浏览器在访问我们的网站的时候也会从master branch里寻找相应的文件。pelican branch用来编译网站的源文件，pelican的设置文件、每一篇blog的Markdown文件等不需要浏览器看到的文件都存在这个branch上。</p>
+<p>稍微等上几分钟，然后在浏览器中输入我们网站的地址，就可以看到刚刚发布的网站了。</p>
             </div>
             <!-- /.entry-content -->
         </article>

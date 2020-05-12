@@ -61,7 +61,7 @@ error like below.
 
 
 
-Now, Let us calculate the p-value for each t-statistic using the cumulative
+Now, let us calculate the p-value for a two-sided test for each t-statistic using the cumulative
 distribution function (CDF) of the student's t-distribution.
 
 .. code:: ipython3
