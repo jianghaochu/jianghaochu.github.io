@@ -40,12 +40,13 @@ AUTHOR_FEED_ATOM = None
 AUTHOR_FEED_RSS = None
 
 # Blogroll
-LINKS = (('GitHub', 'https://github.com/jianghaochu'),
-         ('Email', 'mailto:jianghaochu@gmail.com')
+LINKS = (('Email', 'mailto:jianghaochu@gmail.com'),
          )
 
 # Social widget
-SOCIAL = ()
+SOCIAL = (('GitHub', 'https://github.com/jianghaochu'),
+          ('Twitter', 'https://twitter.com/JianghaoC'),
+          )
 
 DEFAULT_PAGINATION = 10
 
