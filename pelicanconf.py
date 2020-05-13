@@ -18,7 +18,9 @@ IGNORE_FILES = [".ipynb_checkpoints"]
 
 PLUGIN_PATHS = ['plugins/', ]
 
-PLUGINS = ['i18n_subsites', 'render_math', 'more_categories', 'ipynb.markup']
+PLUGINS = ['i18n_subsites', 'render_math', 'more_categories', 'ipynb.markup', 'tipue_search']
+
+DIRECT_TEMPLATES = (('search'))
 
 IPYNB_USE_METACELL = True
 
