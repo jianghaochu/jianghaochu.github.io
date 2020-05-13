@@ -3,7 +3,7 @@ About Me
 
 Hi, I'm Jianghao!
 
-I am a data scientist specialized in economic modelling and business analytics. I received my Ph.D. in Economics, M.S.
+I am a data scientist specialized in economic modeling and business analytics. I received my Ph.D. in Economics, M.S.
 in Applied Mathematics and M.A. in Economics from the University of California, Riverside and my B.S. in Finance from
 Huazhong University of Science and Technology.
  
