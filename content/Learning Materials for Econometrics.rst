@@ -8,17 +8,14 @@ Learning Resources for Econometrics, Statistics and Machine Learning
 
 Over the years, I have used a number of books for Econometrics,
 statistics and machine learning either as a student, teaching assistant
-or lecturer. The books that I still keep hard copies with me are
-Econometric Analysis by William H. Greene, Time Series Analysis by James
-D. Hamilton and Introductory Econometrics by Jeffrey M. Wooldridge. The
-first two are great reference books for econometric theory and the last
-one comes very handy when looking for small economic datasets. Even
-though I enjoy reading hard copies more, but I am more and more inclined
-to have electronic copies when overall cost of carry is considered.
+or lecturer. Even
+though I enjoy reading hard copies more, I am more and more inclined
+to have electronic copies when overall costs of carry are considered.
 Given that more and more electronic books can be freely accessible
 online, I feel that there is little incentive to have a hard copy if you
 do not already own one. Below is a list of openly accessible books that
-I find really helpful.
+I find helpful especially for people interested in econometrics, statistics, and machine
+learning.
 
 Econometrics
 ------------
@@ -44,3 +41,9 @@ Machine Learning
    Generalizations <https://web.stanford.edu/~hastie/StatLearnSparsity/>`__
 -  `An Introduction to Statistical Learning with Applications in
    R <http://faculty.marshall.usc.edu/gareth-james/ISL/>`__
+
+    The books that I still keep hard copies with me are
+    Econometric Analysis by William H. Greene, Time Series Analysis by James
+    D. Hamilton and Introductory Econometrics by Jeffrey M. Wooldridge. The
+    first two are great reference books for econometric theory and the last
+    one comes very handy when looking for small economic data sets.
