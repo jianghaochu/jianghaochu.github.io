@@ -10,7 +10,7 @@
       gtag('config', 'UA-164971995-1');
     </script>
 
-    <title>About Me - Jianghao's blog</title>
+    <title>Recovering Jupyter Notebook from Command History - Jianghao's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -18,16 +18,22 @@
 
 
 
-<link rel="canonical" href="/pages/about-me.html">
+<link rel="canonical" href="/recovering-jupyter-notebook-from-command-history.html">
 
         <meta name="author" content="Jianghao" />
-        <meta name="description" content="Hi, I&#39;m Jianghao! I am a data scientist specialized in economic modeling and business analytics. I received my Ph.D. in Economics, M.S. in Applied Mathematics and M.A. in Economics from the University of California, Riverside and my B.S. in Finance from Huazhong University of Science and …" />
+        <meta name="keywords" content="Python,Jupyter Notebook" />
+        <meta name="description" content="Jupyter notebook recommends to use tools such as Git and Subversion for version control. However, it may not seem necessary to keep track of all the changes we make when experimenting with Jupyter notebook. In that case, if we ever want to check the commands we ran beyond the ability …" />
 
-    <meta property="og:site_name" content="Jianghao's blog" />
-    <meta property="og:type" content="article"/>
-    <meta property="og:title" content="About Me"/>
-    <meta property="og:url" content="/pages/about-me.html"/>
-    <meta property="og:description" content="Hi, I&#39;m Jianghao! I am a data scientist specialized in economic modeling and business analytics. I received my Ph.D. in Economics, M.S. in Applied Mathematics and M.A. in Economics from the University of California, Riverside and my B.S. in Finance from Huazhong University of Science and …" />
+        <meta property="og:site_name" content="Jianghao's blog" />
+        <meta property="og:type" content="article"/>
+        <meta property="og:title" content="Recovering Jupyter Notebook from Command History"/>
+        <meta property="og:url" content="/recovering-jupyter-notebook-from-command-history.html"/>
+        <meta property="og:description" content="Jupyter notebook recommends to use tools such as Git and Subversion for version control. However, it may not seem necessary to keep track of all the changes we make when experimenting with Jupyter notebook. In that case, if we ever want to check the commands we ran beyond the ability …"/>
+        <meta property="article:published_time" content="2020-06-27" />
+            <meta property="article:section" content="Python" />
+            <meta property="article:tag" content="Python" />
+            <meta property="article:tag" content="Jupyter Notebook" />
+            <meta property="article:author" content="Jianghao" />
 
 
 
@@ -58,7 +64,7 @@ Jianghao's blog            </a>
         </div>
         <div class="collapse navbar-collapse navbar-ex1-collapse">
             <ul class="nav navbar-nav">
-                         <li class="active"><a href="/pages/about-me.html">
+                         <li><a href="/pages/about-me.html">
                              About Me
                           </a></li>
                         <li >
@@ -67,7 +73,7 @@ Jianghao's blog            </a>
                         <li >
                             <a href="/category/other.html">Other</a>
                         </li>
-                        <li >
+                        <li class="active">
                             <a href="/category/python.html">Python</a>
                         </li>
             </ul>
@@ -90,26 +96,57 @@ Jianghao's blog            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <section id="content" class="body">
-        <h1 class="entry-title">About Me</h1>
-        
-        <div class="entry-content">
-            <p>Hi, I'm Jianghao!</p>
-<p>I am a data scientist specialized in economic modeling and business analytics. I received my Ph.D. in Economics, M.S.
-in Applied Mathematics and M.A. in Economics from the University of California, Riverside and my B.S. in Finance from
-Huazhong University of Science and Technology.</p>
-<p>This site is mainly aimed to record some of my personal interests and learning experience for my future reference.
-It would be my great pleasure if any of the information shared here can be of use to someone else.</p>
-<p>I am working on an open source Python project <tt class="docutils literal">EconLib</tt> to provide access to adaptable
-source code for econometric methods. The majority of the source code are written
-in basic Python syntax with the use of fundamental scientific computing packages such as <tt class="docutils literal">NumPy</tt>,
-<tt class="docutils literal">SciPy</tt> and <tt class="docutils literal">Pandas</tt>. The package is aimed to act as a learning material for
-numerical implementation of econometric methods as well as a starting point for implementing and testing
-new econometric methods in Python (with little consideration of the efficiency of the program).</p>
-<p>Please feel free to reach out to me at <a class="reference external" href="mailto:jianghaochu&#64;gmail.com">jianghaochu&#64;gmail.com</a> if you have any questions!</p>
+    <section id="content">
+        <article>
+            <header class="page-header">
+                <h1>
+                    <a href="/recovering-jupyter-notebook-from-command-history.html"
+                       rel="bookmark"
+                       title="Permalink to Recovering Jupyter Notebook from Command History">
+                        Recovering Jupyter Notebook from Command History
+                    </a>
+                </h1>
+            </header>
+            <div class="entry-content">
+                <div class="panel">
+                    <div class="panel-body">
+<footer class="post-info">
+    <span class="label label-default">Date</span>
+    <span class="published">
+        <i class="fa fa-calendar"></i><time datetime="2020-06-27T00:00:00+02:00"> Sat 27 June 2020</time>
+    </span>
 
-        </div>
+
+
+
+
+<span class="label label-default">Tags</span>
+	<a href="/tag/python.html">Python</a>
+        /
+	<a href="/tag/jupyter-notebook.html">Jupyter Notebook</a>
+    
+</footer><!-- /.post-info -->                    </div>
+                </div>
+                <p>Jupyter notebook recommends to use tools such as Git and Subversion for
+version control. However, it may not seem necessary to keep track of all
+the changes we make when experimenting with Jupyter notebook. In that
+case, if we ever want to check the commands we ran beyond the ability of
+the undo command, we can check the command history using <tt class="docutils literal">%history</tt>.</p>
+<pre class="code literal-block">
+%history  # Show the command history of the current IPython session
+</pre>
+<p>If the above command is not enough, the following command can be used
+which will show the entire command history including the very first
+command had been written ages ago.</p>
+<pre class="code literal-block">
+%history -g  # Show the entire command history
+</pre>
+
+            </div>
+            <!-- /.entry-content -->
+        </article>
     </section>
+
         </div>
         <div class="col-sm-3" id="sidebar">
             <aside>
