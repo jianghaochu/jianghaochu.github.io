@@ -65,10 +65,13 @@ Jianghao's blog            </a>
                             <a href="/category/econometrics.html">Econometrics</a>
                         </li>
                         <li >
-                            <a href="/category/other.html">Other</a>
+                            <a href="/category/pyhton.html">Pyhton</a>
                         </li>
                         <li >
                             <a href="/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="/category/turtle.html">Turtle</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -90,6 +93,17 @@ Jianghao's blog            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
+            <article>
+                <h2><a href="/using-jupyter-notebook-with-pelican-in-windows.html">Using Jupyter Notebook with Pelican in Windows</a></h2>
+                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<p>Update: This solution does not work with nbconvert &gt;= 6. Tested on nbconvert == 5.6.1.</p>
+<p>There are a few plugins which can help Pelican to generate static contents from Jupyter notebook, such as <a href="https://github.com/danielfrg/pelican-jupyter">Jupyter-Pelican</a>. I like it because it allows the user to put the metadata in the first cell of the notebook. No need to create a separate file for the metadata or edit the metadata of the notebook. However, this option will encounter a permission denied error on Windoes OS because Windows does not allow (at least easily) openning a temporary file for a second time, according to the documentation of <a href="https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile">tempfile.NamedTemporaryFile</a>
+                    <a class="btn btn-default btn-xs" href="/using-jupyter-notebook-with-pelican-in-windows.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
             <article>
                 <h2><a href="/zai-windows10zhong-shi-yong-pelicanhe-github-pagesjian-li-blog.html">在Windows10中使用Pelican和GitHub Pages建立Blog</a></h2>
                 <div class="summary"><p>本文主要介绍如何在Windows10中使用Python的Pelican包建立静态站点，并使用Git发布至GitHub Pages。</p>

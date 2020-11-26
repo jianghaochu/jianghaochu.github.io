@@ -73,10 +73,13 @@ Jianghao's blog            </a>
                             <a href="/category/econometrics.html">Econometrics</a>
                         </li>
                         <li >
-                            <a href="/category/other.html">Other</a>
+                            <a href="/category/pyhton.html">Pyhton</a>
                         </li>
                         <li class="active">
                             <a href="/category/python.html">Python</a>
+                        </li>
+                        <li >
+                            <a href="/category/turtle.html">Turtle</a>
                         </li>
             </ul>
             <ul class="nav navbar-nav navbar-right">
@@ -155,24 +158,24 @@ Pelican是Python中用来生成静态站点的package。虽然GitHub建议使用
  ://pages.github.com/">GitHub Pages主页</a>和<a href="https://help.github.com/cn/github/working-with-github-pages">GitHub Pages帮助文档</a>中找到，这里就不再赘述。若有什么问题也可以留言给我，我将尽力回答。（留言功能我将会尽快设置，设置好之后我会再写一篇文章介绍具体的设置方法。）</p>
 <p>创建好GitHub repository之后， 在本地电脑新建一个文件夹用来存放所有和站点有关的文件。然后进入文件夹，使用Git
 将GitHub云端的的repository克隆到本地。</p>
-<div class="highlight"><pre><span></span><code>git clone https://github.com/username/username.github.io.git
-</code></pre></div>
+<div class="highlight"><pre><span></span>git clone https://github.com/username/username.github.io.git
+</pre></div>
 
 
 <p>这样我们就将GitHub云端的repository和本地的文件联系在了一起。接下来我们着重介绍一下如何使用pelican建立静态站点以及如何将建立的静态站点方便快捷的发布到GitHub Pages上。</p>
 <h3>使用pelican-quickstart创建静态站点</h3>
 <p>首先使用命令行安装pelican和markdown：</p>
-<div class="highlight"><pre><span></span><code>pip install pelican markdown
-</code></pre></div>
+<div class="highlight"><pre><span></span>pip install pelican markdown
+</pre></div>
 
 
 <p>然后使用命令行运行<code>pelican-quickstart</code>命令：</p>
-<div class="highlight"><pre><span></span><code>pelican-quickstart
-</code></pre></div>
+<div class="highlight"><pre><span></span>pelican-quickstart
+</pre></div>
 
 
 <p>根据需要回答问题。以下是我的回答：</p>
-<div class="highlight"><pre><span></span><code>&gt; Where do you want to create your new web site? [.]
+<div class="highlight"><pre><span></span>&gt; Where do you want to create your new web site? [.]
 &gt; What will be the title of this web site? My Blog
 &gt; Who will be the author of this web site? Me
 &gt; What will be the default language of this web site? [English] en
@@ -180,7 +183,7 @@ Pelican是Python中用来生成静态站点的package。虽然GitHub建议使用
 &gt; Do you want to enable article pagination? (Y/n) n
 &gt; What is your time zone? [Europe/Paris]
 &gt; Do you want to generate a tasks.py/Makefile to automate generation and publishing? (Y/n) n
-</code></pre></div>
+</pre></div>
 
 
 <p>需要注意的是若在Windows中使用pelican，最后一个问题推荐选No。因为Windows默认未安装Make命令，若选择是需要单独安装Make功能，而且过程并不简单。</p>
@@ -188,31 +191,31 @@ Pelican是Python中用来生成静态站点的package。虽然GitHub建议使用
 <p>站点已经建立好了，接下来为站点添加内容。首先在站点目录下（若是使用我的回答，就是terminal的当前目录）新建
 一个名为content的文件夹用来保存内容页面。 然后在content文件夹下创建新的内容页面，以md作为文件拓展名，如my-first-blog.md。
 在my-first-blog.md文件中输入：</p>
-<div class="highlight"><pre><span></span><code><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Blog</span>
+<div class="highlight"><pre><span></span><span class="n">Title</span><span class="o">:</span> <span class="n">My</span> <span class="n">First</span> <span class="n">Blog</span>
 <span class="n">Date</span><span class="o">:</span> <span class="mi">2020</span><span class="o">-</span><span class="mi">03</span><span class="o">-</span><span class="mi">22</span>
 <span class="n">Category</span><span class="o">:</span> <span class="n">Blog</span>
 
 <span class="n">This</span> <span class="k">is</span> <span class="n">the</span> <span class="n">first</span> <span class="n">blog</span> <span class="n">of</span> <span class="n">my</span> <span class="n">site</span><span class="o">.</span>
-</code></pre></div>
+</pre></div>
 
 
 <p>在命令行中输入：</p>
-<div class="highlight"><pre><span></span><code>pelican content
+<div class="highlight"><pre><span></span>pelican content
 pelican --listen
-</code></pre></div>
+</pre></div>
 
 
 <p>然后在浏览器地址栏输入localhost:8000便可以在本地电脑中看到做出的blog的效果。</p>
 <h3>发布至GitHub Pages</h3>
 <p>接下来需要将做好的静态展点发布至GitHub Pages。由于之前在创建GitHub账号的时候我们已经将云端repository和本地文件建立了联系，现在我们可以直接使用一下命令将本地文件上传至云端。</p>
-<div class="highlight"><pre><span></span><code>git add .  # 将修改过的本地文件添加到Git目录中
+<div class="highlight"><pre><span></span>git add .  # 将修改过的本地文件添加到Git目录中
 git commit -a -m &quot;my first post&quot;  # Commit我们所做的修改
 git push -u origin pelican  # 将站点的源文件上传至GitHub repository的pelican branch中
 pelican content -o output -s pelicanconf.py  # 使用pelican建立站点，并将编译好的站点文件存在output文件夹中
 ghp-import output -r origin -b master  # 将output文件夹中的文件复制到master branch
 git push origin master  # 将master branch上传至云端
 git checkout pelican  # 返回pelican branch
-</code></pre></div>
+</pre></div>
 
 
 <p>以后每次对网站做出修改之后只需要重新执行上述命令就可以在网站上看到所做的修改。注意这里我们在GitHub上建立了两个branch，master branch用来存放编译好的站点文件，浏览器在访问我们的网站的时候也会从master branch里寻找相应的文件。pelican branch用来编译网站的源文件，pelican的设置文件、每一篇blog的Markdown文件等不需要浏览器看到的文件都存在这个branch上。</p>
