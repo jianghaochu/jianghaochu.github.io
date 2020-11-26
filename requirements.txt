@@ -1,0 +1,4 @@
+jupyter==1.0.0
+pelican==4.2.0
+pelican-jupyter==0.10.0
+bs4==0.0.1

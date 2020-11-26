@@ -18,11 +18,11 @@ IGNORE_FILES = [".ipynb_checkpoints"]
 
 PLUGIN_PATHS = ['plugins/', ]
 
-PLUGINS = ['i18n_subsites', 'render_math', 'more_categories', 'ipynb.markup', 'tipue_search']
+from pelican_jupyter import markup as nb_markup
+PLUGINS = ['i18n_subsites', 'render_math', 'more_categories', 'tipue_search', nb_markup]
+IPYNB_MARKUP_USE_FIRST_CELL = True
 
 DIRECT_TEMPLATES = (('index', 'tags', 'categories', 'authors', 'archives', 'search'))
-
-IPYNB_USE_METACELL = True
 
 JINJA_ENVIRONMENT = {
     'extensions': ['jinja2.ext.i18n'],
