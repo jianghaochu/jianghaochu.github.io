@@ -49,6 +49,7 @@ SOCIAL = (('GitHub', 'https://github.com/jianghaochu'),
           )
 
 DEFAULT_PAGINATION = 8
+PYGMENTS_STYLE = "solarizedlight"
 
 # Uncomment following line if you want document-relative URLs when developing
 #RELATIVE_URLS = True
