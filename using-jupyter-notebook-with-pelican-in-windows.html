@@ -41,7 +41,7 @@
         <link rel="stylesheet" href="/theme/css/bootstrap.min.css" type="text/css"/>
     <link href="/theme/css/font-awesome.min.css" rel="stylesheet">
 
-    <link href="/theme/css/pygments/native.css" rel="stylesheet">
+    <link href="/theme/css/pygments/solarizedlight.css" rel="stylesheet">
     <link href="/theme/tipuesearch/tipuesearch.css" rel="stylesheet">
     <link rel="stylesheet" href="/theme/css/style.css" type="text/css"/>
 
@@ -398,7 +398,7 @@ div.cell.selected.jupyter-soft-selected:before {
 }
 .prompt {
   /* This needs to be wide enough for 3 digit prompt numbers: In[100]: */
-  min-width: 14ex;
+  min-width: 4ex;
   /* This padding is tuned to match the padding on the CodeMirror editor. */
   padding: 0.4em;
   margin: 0px;
@@ -1247,29 +1247,23 @@ h6:hover .anchor-link {
 <p>Update: This solution does not work with nbconvert &gt;= 6. Tested on nbconvert == 5.6.1.</p>
 <p>There are a few plugins which can help Pelican to generate static contents from Jupyter notebook, such as <a href="https://github.com/danielfrg/pelican-jupyter">Jupyter-Pelican</a>. I like it because it allows the user to put the metadata in the first cell of the notebook. No need to create a separate file for the metadata or edit the metadata of the notebook. However, this option will encounter a permission denied error on Windoes OS because Windows does not allow (at least easily) openning a temporary file for a second time, according to the documentation of <a href="https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile">tempfile.NamedTemporaryFile</a>. Other discussions on reading a temporary file in Windows can be found at <a href="https://bugs.python.org/issue14243#msg164504">Python bug tracker</a> and <a href="https://stackoverflow.com/questions/15169101/how-to-create-a-temporary-file-that-can-be-read-by-a-subprocess">stackoverflow</a>.</p>
 <p>The <a href="https://github.com/danielfrg/pelican-jupyter/blob/183d01824788dcc5fe9320f746f9c8c62aa29999/pelican_jupyter/markup.py#L78-L82">lines</a> causing the error are as below:</p>
-
-<pre><code>:::python
-with tempfile.NamedTemporaryFile("w+", encoding="utf-8") as metadata_file:
-    md_reader = MarkdownReader(self.settings)
-    metadata_file.write(metacell)
-    metadata_file.flush()
-    _content, metadata = md_reader.read(metadata_file.name)
-
-</code></pre>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">metadata_file</span><span class="p">:</span>
+    <span class="n">md_reader</span> <span class="o">=</span> <span class="n">MarkdownReader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">metadata_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">metacell</span><span class="p">)</span>
+    <span class="n">metadata_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">_content</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">md_reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">metadata_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
 <p>Right now, there is no perfect fix. So I went ahead and changed the lines in my local library as below:</p>
-
-<pre><code>:::python
-metadata_file = tempfile.NamedTemporaryFile("w+", encoding="utf-8", delete=False)
-try:
-    md_reader = MarkdownReader(self.settings)
-    metadata_file.write(metacell)
-    metadata_file.flush()
-    metadata_file.close()
-    _content, metadata = md_reader.read(metadata_file.name)
-finally:
-    os.remove(metadata_file.name)
-
-</code></pre>
+<div class="highlight"><pre><span></span><span class="n">metadata_file</span> <span class="o">=</span> <span class="n">tempfile</span><span class="o">.</span><span class="n">NamedTemporaryFile</span><span class="p">(</span><span class="s2">&quot;w+&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">,</span> <span class="n">delete</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="k">try</span><span class="p">:</span>
+    <span class="n">md_reader</span> <span class="o">=</span> <span class="n">MarkdownReader</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">settings</span><span class="p">)</span>
+    <span class="n">metadata_file</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">metacell</span><span class="p">)</span>
+    <span class="n">metadata_file</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+    <span class="n">metadata_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+    <span class="n">_content</span><span class="p">,</span> <span class="n">metadata</span> <span class="o">=</span> <span class="n">md_reader</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">metadata_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+<span class="k">finally</span><span class="p">:</span>
+    <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="n">metadata_file</span><span class="o">.</span><span class="n">name</span><span class="p">)</span>
+</pre></div>
 <p>It's not an elegant solution but now everything works. I can have Jupyter notebook organize all my Markdown, LaTex, input and output while having Pelican generate the static site.</p>
 <h4 id="Markdown">Markdown<a class="anchor-link" href="#Markdown">&#182;</a></h4><p>I don't like Markdown.</p>
 <h4 id="LaTex">LaTex<a class="anchor-link" href="#LaTex">&#182;</a></h4><p>This is a try to use latex in Markdown. Let us start with a simple linear model.
@@ -1280,7 +1274,7 @@ $$y=\beta_0+\beta_1x_1+\beta_2x_2+u$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[2]:</div>
+<div class="prompt input_prompt">In&nbsp;:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;Hello World!&#39;</span><span class="p">)</span>
@@ -1296,7 +1290,8 @@ $$y=\beta_0+\beta_1x_1+\beta_2x_2+u$$</p>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">
+        Out:</div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
@@ -1311,7 +1306,7 @@ $$y=\beta_0+\beta_1x_1+\beta_2x_2+u$$</p>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[4]:</div>
+<div class="prompt input_prompt">In&nbsp;:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1337,7 +1332,8 @@ $$y=\beta_0+\beta_1x_1+\beta_2x_2+u$$</p>
 
 <div class="output_area">
 
-    <div class="prompt"></div>
+    <div class="prompt output_prompt">
+        Out:</div>
 
 
 <div class="output_subarea output_stream output_stdout output_text">
