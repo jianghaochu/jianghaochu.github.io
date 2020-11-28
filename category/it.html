@@ -10,7 +10,7 @@
       gtag('config', 'UA-164971995-1');
     </script>
 
-    <title>How to Install Rpy2 in Windows 10 - Jianghao's blog</title>
+    <title>IT - Jianghao's blog</title>
     <!-- Using the latest rendering mode for IE -->
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta charset="utf-8">
@@ -18,23 +18,16 @@
 
 
 
-<link rel="canonical" href="/how-to-install-rpy2-in-windows-10.html">
 
-        <meta name="author" content="Jianghao" />
-        <meta name="keywords" content="Python,R,Rpy2" />
-        <meta name="description" content="Rpy2 is a popular Python interface to R. It allows Python users to enjoy the breadth and depth of R packages in Python. Yet, unlike in UNIX-like operating systems, it is not straightforward to install and set up rpy2 in Windows. This article shows a simple way to install the …" />
+    <meta name="author" content="Jianghao" />
+    <meta name="keywords" content="IT" />
 
+    <!-- Open Graph tags -->
         <meta property="og:site_name" content="Jianghao's blog" />
-        <meta property="og:type" content="article"/>
-        <meta property="og:title" content="How to Install Rpy2 in Windows 10"/>
-        <meta property="og:url" content="/how-to-install-rpy2-in-windows-10.html"/>
-        <meta property="og:description" content="Rpy2 is a popular Python interface to R. It allows Python users to enjoy the breadth and depth of R packages in Python. Yet, unlike in UNIX-like operating systems, it is not straightforward to install and set up rpy2 in Windows. This article shows a simple way to install the …"/>
-        <meta property="article:published_time" content="2020-04-04" />
-            <meta property="article:section" content="Python" />
-            <meta property="article:tag" content="Python" />
-            <meta property="article:tag" content="R" />
-            <meta property="article:tag" content="Rpy2" />
-            <meta property="article:author" content="Jianghao" />
+        <meta property="og:type" content="website"/>
+        <meta property="og:title" content="Jianghao's blog"/>
+        <meta property="og:url" content=""/>
+        <meta property="og:description" content="Jianghao's blog"/>
 
 
 
@@ -69,18 +62,18 @@ Jianghao's blog            </a>
                              About Me
                           </a></li>
                         <li >
-                            <a href="/category/bash.html">Bash</a>
-                        </li>
-                        <li >
                             <a href="/category/econometrics.html">Econometrics</a>
                         </li>
                         <li >
                             <a href="/category/git.html">Git</a>
                         </li>
+                        <li class="active">
+                            <a href="/category/it.html">It</a>
+                        </li>
                         <li >
                             <a href="/category/other.html">Other</a>
                         </li>
-                        <li class="active">
+                        <li >
                             <a href="/category/python.html">Python</a>
                         </li>
             </ul>
@@ -103,76 +96,44 @@ Jianghao's blog            </a>
 <div class="container">
     <div class="row">
         <div class="col-sm-9">
-    <section id="content">
-        <article>
-            <header class="page-header">
-                <h1>
-                    <a href="/how-to-install-rpy2-in-windows-10.html"
-                       rel="bookmark"
-                       title="Permalink to How to Install Rpy2 in Windows 10">
-                        How to Install Rpy2 in Windows 10
-                    </a>
-                </h1>
-            </header>
-            <div class="entry-content">
-                <div class="panel">
-                    <div class="panel-body">
-<footer class="post-info">
-    <span class="label label-default">Date</span>
-    <span class="published">
-        <i class="fa fa-calendar"></i><time datetime="2020-04-04T00:00:00+02:00"> Sat 04 April 2020</time>
-    </span>
-
-
-
-
-
-<span class="label label-default">Tags</span>
-	<a href="/tag/python.html">Python</a>
-        /
-	<a href="/tag/r.html">R</a>
-        /
-	<a href="/tag/rpy2.html">Rpy2</a>
-    
-</footer><!-- /.post-info -->                    </div>
+            <article>
+                <h2><a href="/bash-basics.html">Bash Basics</a></h2>
+                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Basic-Commands">Basic Commands<a class="anchor-link" href="#Basic-Commands">&#182;</a></h3>
+<pre><code>$ echo
+$ cat
+$ ls [-la]  # list files in the present directory
+$ chmod [+x] file
+$ mkdir  # make new directories
+$ cd  # change the directory
+$ pwd  # present working directory
+$ cp path_from path_to  # copy
+$ mv path_from path_to
+$ rm path  # delect files
+$ rmdir  # delete empty directories
+$ touch file_name # create empty file
+$ tr ' ' '\n'  # translate ' ' into '\n'
+$ sort [-nr] # sort [numerically, reversely]
+$ uniq [-c]  # unique [with number of occurance]
+$ head  # first 10 lines
+$ grep  # regular expression
+$ ps ax|e # processes
+$ cut
+$ date
+$ who
+$ man
+$ kill
+$ fg
+$ bg
+$ jobs
+$ free
+$ uptime</code>
+                    <a class="btn btn-default btn-xs" href="/bash-basics.html">more ...</a>
                 </div>
-                <p><tt class="docutils literal">Rpy2</tt> is a popular Python interface to R. It allows Python users to enjoy the breadth and depth of R packages in Python. Yet, unlike in UNIX-like operating systems, it is not straightforward
-to install and set up <tt class="docutils literal">rpy2</tt> in Windows. This article shows a simple way to install the <tt class="docutils literal">rpy2</tt> Python interface to R on a Windows 10 machine.</p>
-<div class="section" id="download-rpy2-whl">
-<h2>Download <tt class="docutils literal">Rpy2.whl</tt></h2>
-<p>Unlike what we would usually do to install Python packages, on a Windows machine, the following command might not work as expected for <tt class="docutils literal">rpy2</tt>:</p>
-<pre class="code literal-block">
-pip install rpy2
-</pre>
-<p>A work around is to download <a class="reference external" href="http://www.lfd.uci.edu/~gohlke/pythonlibs/#rpy2">rpy2</a> from the Unofficial Windows Binaries for Python Extension Packages
-to the current working directory. Then use the following command to install <tt class="docutils literal">rpy2</tt> from the downloaded file:</p>
-<pre class="code literal-block">
-pip install rpy2‑2.9.5‑cp37‑cp37m‑win32.whl
-</pre>
-</div>
-<div class="section" id="set-up-r-home-and-r-user">
-<h2>Set up <cite>R_HOME</cite> and <cite>R_USER</cite></h2>
-<p>After successfully installing the package, we need to set up two environment variables in Windows before
-<tt class="docutils literal">rpy2</tt> can work properly.
-Right click on This PC. Then go to Properties -&gt; Advanced System Settings -&gt; Environment Variables.
-First, create a new system variable, <cite>R_HOME</cite>, which takes the path of the R installation directory as its value.
-For me, it looks like this.</p>
-<pre class="literal-block">
-C:Program FilesRR-3.6.3
-</pre>
-<p>Then, create another system variable, <cite>R_USER</cite>, which takes the path of the <tt class="docutils literal">rpy2</tt> installation directory as its value.
-For me, it looks like this.</p>
-<pre class="literal-block">
-F:MyProjectvenvLibsite-packagesrpy2
-</pre>
-<p>Note: If it still does not work properly, try creating <cite>R_USER</cite> as a user variable too.</p>
-<p>Now <tt class="docutils literal">rpy2</tt> should work as expected and you can start using the R packages you like.</p>
-</div>
-
-            </div>
-            <!-- /.entry-content -->
-        </article>
-    </section>
+            </article>
+            <hr/>
 
         </div>
         <div class="col-sm-3" id="sidebar">
