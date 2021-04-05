@@ -96,9 +96,36 @@ Jianghao's blog            </a>
     <div class="row">
         <div class="col-sm-9">
             <article>
-                <h2><a href="/formulae-auto-drivation-for-nested-logit-models.html">Formulae Auto-Drivation for Nested Logit Models</a></h2>
+                <h2><a href="/version-control-with-git-check-differences.html">Version Control with Git: Check Differences</a></h2>
+                <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h3 id="Changing-Git-history">Changing Git history<a class="anchor-link" href="#Changing-Git-history">&#182;</a></h3><h4 id="Check-Changes-from-Last-Commit">Check Changes from Last Commit<a class="anchor-link" href="#Check-Changes-from-Last-Commit">&#182;</a></h4><div class="highlight"><pre><span></span>git diff
+git add -p
+</pre></div>
+
+<pre><code>git rm
+git mv</code></pre>
+
+<pre><code>git checkout [-p] &lt;file&gt;
+git restore &lt;file&gt;</code></pre>
+
+<pre><code>git reset [-p]
+git restore --staged &lt;file&gt;</code></pre>
+
+<pre><code>git stash
+git stash apply
+git checkout -b new_branch HEAD~2</code></pre>
+<div class="highlight"><pre><span></span>git reset --hard HEAD~3  <span class="c1"># Go back in time, throwing away changes</span>
+git reset --soft HEAD~3  <span class="c1"># Set HEAD to point to an earlier commit</span>
+                    <a class="btn btn-default btn-xs" href="/version-control-with-git-check-differences.html">more ...</a>
+                </div>
+            </article>
+            <hr/>
+            <article>
+                <h2><a href="/formulae-auto-derivation-for-nested-logit-models.html">Formulae Auto-Derivation for Nested Logit Models</a></h2>
                 <div class="summary"><p>This file uses the Symbolic Python (SymPy) package to derive the elasticity formulae for Nested Logit Models. SymPy is a Python library for symbolic mathematics. It aims to become a full-featured computer algebra system (CAS) while keeping the code as simple as possible in order to be comprehensible and easily …</p>
-                    <a class="btn btn-default btn-xs" href="/formulae-auto-drivation-for-nested-logit-models.html">more ...</a>
+                    <a class="btn btn-default btn-xs" href="/formulae-auto-derivation-for-nested-logit-models.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -124,13 +151,12 @@ touch file_name <span class="c1"># create empty file</span>
             </article>
             <hr/>
             <article>
-                <h2><a href="/version-control-with-git.html">Version Control with Git</a></h2>
+                <h2><a href="/version-control-with-git-1-basic-workflow.html">Version Control with Git (1): Basic Workflow</a></h2>
                 <div class="summary"><div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<p>This blog shows how to use Git in a brand new project. It covers creating a repository, staging and commiting changes, adding a remote repository, and pushing commits.</p>
-<h4 id="Create-or-clone-a-Git-repository">Create or clone a Git repository<a class="anchor-link" href="#Create-or-clone-a-Git-repository">&#182;</a></h4><p>To use Git for version control, we need to have a Git repository. We can get it by initiating Git in a local directory or cloning a remote Git repository. First, go to the directory that we want Git to track for us and use one of the following commands to create a Git repository.</p>
-                    <a class="btn btn-default btn-xs" href="/version-control-with-git.html">more ...</a>
+<p>Git can be seen as taking a series of snapshots of important stages of a project. If we want Git to take a snapshot of the current status of the project, we make a commit. by recording the changes made in each commit. Changes can be untracked, staged (cached) or commited. If we make a change to a file in the project, it will first appear as untracked. Untracked changes do not make any difference to Git. If we think the change is meanful and plan to save it, we need to staged it to tell Git to include it in the next commit. After we stage all the changes we want to include in this commit, we commit the staged changes and Git will save the changes.</p>
+                    <a class="btn btn-default btn-xs" href="/version-control-with-git-1-basic-workflow.html">more ...</a>
                 </div>
             </article>
             <hr/>
@@ -176,15 +202,6 @@ Python. In most cases, we would also need the t-statistic and its
 p-value to see if the coefficients we got are statistically significant.
 To achieve this, we will use <tt class="docutils literal">SciPy</tt>, a powerful …</p>
                     <a class="btn btn-default btn-xs" href="/calculating-t-statistic-for-ols-regression-in-python.html">more ...</a>
-                </div>
-            </article>
-            <hr/>
-            <article>
-                <h2><a href="/things-one-should-know-before-having-a-pet-turtle.html">Things One Should Know before Having a Pet Turtle</a></h2>
-                <div class="summary"><p>I got my one-month-old red-eared turtle from PetSmart yesterday and learned a lot from the staff there.
-Keeping a pet turtle actually needs more work and preparation than I initially expected. Here is a summary of the things 
-I learned and I believe everyone should know when considering having a …</p>
-                    <a class="btn btn-default btn-xs" href="/things-one-should-know-before-having-a-pet-turtle.html">more ...</a>
                 </div>
             </article>
             <hr/>
