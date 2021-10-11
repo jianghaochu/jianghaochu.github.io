@@ -109,7 +109,8 @@ Jianghao's blog            </a>
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Update: This solution does not work with nbconvert &gt;= 6. Tested on nbconvert == 5.6.1.</p>
-<p><a href="https://github.com/danielfrg/pelican-jupyter">Jupyter-Pelican</a> is a plugin that helps Pelican to generate static contents from Jupyter notebook. I like it because it allows the user to put the metadata in the first cell of the notebook. No need to create a separate file for the metadata or edit the metadata of the notebook. However, this option will encounter a permission denied error on Windoes OS because Windows does not allow (at least easily) openning a temporary file for a second time, according to the documentation of <a href="https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile">tempfile.NamedTemporaryFile</a>
+<p><a href="https://github.com/danielfrg/pelican-jupyter">Jupyter-Pelican</a> is a plugin that helps Pelican to generate static contents from Jupyter notebook. I like it because it allows the user to put the
+metadata in the first cell of the notebook. No need to create a separate file for the metadata or edit the metadata of the notebook. However, this option will encounter a permission denied error on Windows OS because Windows does not allow (at least easily) openning a temporary file for a second time, according to the documentation of <a href="https://docs.python.org/3/library/tempfile.html#tempfile.NamedTemporaryFile">tempfile.NamedTemporaryFile</a>
                     <a class="btn btn-default btn-xs" href="/using-jupyter-notebook-with-pelican-in-windows.html">more ...</a>
                 </div>
             </article>
