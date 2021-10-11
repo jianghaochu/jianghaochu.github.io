@@ -38,7 +38,7 @@ git clone https://github.com/username/username.github.io.git
 ### 使用pelican-quickstart创建静态站点
 首先使用命令行安装pelican和markdown：
 ```text
-pip install pelican markdown
+pip install pelican markdown ghp-import
 ```
 然后使用命令行运行`pelican-quickstart`命令：
 ```text
