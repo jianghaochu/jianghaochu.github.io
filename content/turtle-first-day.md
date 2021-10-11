@@ -1,6 +1,6 @@
 Title: Things One Should Know before Having a Pet Turtle
 Date: 04/27/2020
-Category: Turtle
+Category: Other
 Tags: Turtle
 
 I got my one-month-old red-eared turtle from PetSmart yesterday and learned a lot from the staff there.
